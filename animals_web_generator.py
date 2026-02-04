@@ -27,19 +27,19 @@ def output_tier(t):
 
     name = get_name(t)
     if name is not None:
-        output += f"Name: {"name"}<br/>\n"
+        output += f"Name: {name}<br/>\n"
 
     diet = get_diet(t)
     if diet is not None:
-        output += f"Diet: {"diet"}<br/>\n"
+        output += f"Diet: {diet}<br/>\n"
 
     first_loc = get_first_location(t)
     if first_loc is not None:
-        output += f"Location: {"first_loc"}<br/>\n"
+        output += f"Location: {first_loc}<br/>\n"
 
     typ = get_type(t)
     if typ is not None:
-        output += f"Type: {"typ"}<br/>\n"
+        output += f"Type: {typ}<br/>\n"
         
     output += '</li>'
 
