@@ -20,35 +20,50 @@ def get_type(t):
     else:
         return tpe
 
-def print_tier(t):
-    parts = []
+def output_tier(t):
+    output = ""
 
     name = get_name(t)
     if name is not None:
-        parts.append(f"Name: {name}")
+        output += f"Name: {name}\n"
 
     diet = get_diet(t)
     if diet is not None:
-        parts.append(f"Diet: {diet}")
+        output += f"Diet: {diet}\n"
 
     first_loc = get_first_location(t)
     if first_loc is not None:
-        parts.append(f"Location: {first_loc}")
+        output += f"Location: {first_loc}\n"
 
     typ = get_type(t)
     if typ is not None:
-        parts.append(f"Type: {typ}")
+        output += f"Type: {typ}\n"
 
-    if parts:
-        print("\n".join(parts))
-        print()
+    if output:
+        return output
+    return ""
+
+def print_tier(data):
+    all_output = []
+    for animal in data:
+        s = output_tier(animal)
+        if s:
+            all_output.append(s)
+    return "\n".join(all_output)
 
 def main():
     with open("animals_data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
-        for animal in data:
-            print_tier(animal)
+    with open("animals_template.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+        output = print_tier(data)
+
+        new_html = html.replace("__REPLACE_ANIMALS_INFO__", output)
+
+    with open("animals.html", "w", encoding="utf-8") as f:
+        f.write(new_html)
 
 if __name__ == "__main__":
     main()
