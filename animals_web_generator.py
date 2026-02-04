@@ -27,21 +27,23 @@ def output_tier(t):
 
     name = get_name(t)
     if name is not None:
-        output += f"Name: {name}<br/>\n"
+        output += f'<div class="card__title">{name}</div>'
+        output += '<p class="card__text">'
 
-    diet = get_diet(t)
-    if diet is not None:
-        output += f"Diet: {diet}<br/>\n"
+        diet = get_diet(t)
+        if diet is not None:
+            output += f'<strong>Diet:</strong> {diet}<br/>'
 
-    first_loc = get_first_location(t)
-    if first_loc is not None:
-        output += f"Location: {first_loc}<br/>\n"
+        first_loc = get_first_location(t)
+        if first_loc is not None:
+            output += f'<strong>Location:</strong> {first_loc}<br/>'
 
-    typ = get_type(t)
-    if typ is not None:
-        output += f"Type: {typ}<br/>\n"
-        
-    output += '</li>'
+        typ = get_type(t)
+        if typ is not None:
+            output += f'<strong>Type:</strong> {typ}<br/>'
+
+        output += "</p>"
+    output += "</li>"
 
     if output:
         print(output)
