@@ -19,20 +19,16 @@ def get_type(t):
     """get the type out of animal_data.json"""
     ch = t.get("characteristics", {})
     tpe = ch.get("type")
-    if tpe is None:
-        return None
-    else:
-        return tpe
+    return tpe
 
 def output_html(t):
     """create the output list and format the html for the cards"""
     output = ""
-
     output += '<li class="cards__item">'
 
     name = get_name(t)
     if name is not None:
-        output += f'<div class="card__title"><center>{name}</div>'
+        output += f'<div class="card__title">{name}</div>'
         output += '<div class="card__text">'
         output += '<ul>'
 
@@ -50,11 +46,10 @@ def output_html(t):
 
         output += '</ul>'
 
-        output += '</p>'
+        output += '</div>'
     output += '</li>'
 
     if output:
-        print(output)
         return output
     return ""
 
